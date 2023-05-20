@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 1358334362707698361}
   - component: {fileID: 1358334362707698342}
   - component: {fileID: 1358334362707698343}
-  - component: {fileID: 1358334362707698340}
   - component: {fileID: -3713542946886672600}
+  - component: {fileID: 7945996668269283924}
   m_Layer: 3
-  m_Name: fish
+  m_Name: food
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1358334362707698341}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.2651364, y: 0.22227663, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 55dbba208bd9ebf4a9771105e148f7cd, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 52c586fb58c78e741b8eec95d3546a46, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +101,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06133741, y: 0.030668706}
+  m_Offset: {x: -0.0000121593475, y: -0.0000063180923}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -112,7 +112,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75000775, y: 0.3148039}
+  m_Size: {x: 1.0199475, y: 0.96511054}
   m_EdgeRadius: 0
 --- !u!50 &1358334362707698343
 Rigidbody2D:
@@ -135,22 +135,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1358334362707698340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358334362707698341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5aaefb2cd47ba548be479100ba91cbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _horizontalSpeed: 0.01
-  _verticalAmplitude: 0.01
-  _verticalSpeed: 1
-  _diedTint: {r: 0.7506243, g: 0.8018868, b: 0.7224546, a: 1}
 --- !u!114 &-3713542946886672600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +147,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246132cad03fa6f49a1a563e00d8df0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7945996668269283924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358334362707698341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51313bdf769f6514ba28bc75fa459628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _horizontalSpeed: 0.005
+  _verticalAmplitude: 0.005
+  _verticalSpeed: 1
+  _diedTint: {r: 0.8207547, g: 0.80789506, b: 0.5458793, a: 1}
+  _eatDistance: 0
+  _eatDuration: 0
+  _lifeLength: 20
+  _eatingLongerLife: 0

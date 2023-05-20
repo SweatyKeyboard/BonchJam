@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class DeadMoving : IMoveType
 {
-    public Vector2 Direction = Vector2.right;
-
     private float _verticalAmplitude;
     private float _verticalSpeed;
 
@@ -13,8 +11,15 @@ public class DeadMoving : IMoveType
         _verticalSpeed = verticalSpeed;
     }
 
+    public Vector2 Direction
+    {
+        get => Vector2.zero;
+        set => Direction = value;
+    }
+
     public Vector2 Move(float _horizontalSpeed)
     {
-        return Vector2.up * Mathf.Sin(Time.time * _verticalSpeed) * _verticalAmplitude / 2;
+        return Vector2.down * _horizontalSpeed / 2 +
+            Vector2.right* Mathf.Sin(Time.time * _verticalSpeed) * _verticalAmplitude / 2;
     }
 }

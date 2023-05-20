@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b9095b7729fccd41b0bf1e612aefbc5, type: 3}
-  m_Name: Fish2
+  m_Name: Food
   m_EditorClassIdentifier: 
-  _spawnTime: 5
-  _objectPrefab: {fileID: -3713542946886672600, guid: 451b7abba568a9a479a2631b3849d96e, type: 3}
-  _sprite: {fileID: 21300000, guid: b124f202c46ab8d47a74053e755edd01, type: 3}
+  _spawnTime: 1
+  _pipeBrakingValue: 1
+  _objectPrefab: {fileID: -3713542946886672600, guid: 45c6e2c78ef2f554eab4c3024f9d7917, type: 3}
+  _sprite: {fileID: 21300000, guid: 52c586fb58c78e741b8eec95d3546a46, type: 3}

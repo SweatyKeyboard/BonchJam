@@ -7,6 +7,14 @@ public class FollowMove : IMoveType
 
     public float Distance => Vector2.Distance(_target.position, _self.position);
     public Transform Target => _target;
+
+    private Vector2 _direction;
+    public Vector2 Direction 
+    {
+        get => _direction;
+        set => _direction = value;
+    }
+
     public FollowMove(Transform self)
     {
         _self = self;

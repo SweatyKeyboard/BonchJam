@@ -2,11 +2,15 @@ using UnityEngine;
 
 public class LeftRightMove : IMoveType
 {
-    public Vector2 Direction = Vector2.right;
-
     private float _verticalAmplitude;
     private float _verticalSpeed;
 
+    private Vector2 _direction;
+    public Vector2 Direction
+    {
+        get => _direction;
+        set => _direction = value;
+    }
     public LeftRightMove(float verticalSpeed, float verticalAmplitude)
     {
         _verticalAmplitude = verticalAmplitude;
