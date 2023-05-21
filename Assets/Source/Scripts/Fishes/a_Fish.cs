@@ -152,6 +152,8 @@ public abstract class a_Fish : MonoBehaviour, IVictim, ISelectable
         }
         Bar.Instance.AdditionalDecreaseBySecond += _barIncrease;
 
+        Goals.Instance.CheckFishes();
+
         Destroy(gameObject);
     }
 
@@ -174,12 +176,11 @@ public abstract class a_Fish : MonoBehaviour, IVictim, ISelectable
 
     public void Select()
     {
-        _spriteRenderer.sprite = _deadSelected;
-
+        _animator.SetBool("IsSelected", true);
     }
 
     public void Deselect()
     {
-        _spriteRenderer.sprite = _deadSprite;
+        _animator.SetBool("IsSelected", false);
     }
 }

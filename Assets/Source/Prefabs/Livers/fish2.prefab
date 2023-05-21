@@ -166,12 +166,13 @@ MonoBehaviour:
   _diedTint: {r: 1, g: 1, b: 1, a: 1}
   _eatDistance: 0.15
   _eatDuration: 0.5
-  _lifeLength: 5
+  _lifeLength: 15
   _eatingLongerLife: 0
   _barDecreaseBySecondOnDead: 0.06666667
   _barIncrease: 0
   _deadSprite: {fileID: 21300000, guid: e07db42c13f466941ba695ca5fa813f2, type: 3}
   _deadSelected: {fileID: 21300000, guid: 24ba772ce1cfbab4b88ef07f76131c44, type: 3}
+  _restTime: 5
 --- !u!95 &1060440165768726741
 Animator:
   serializedVersion: 5

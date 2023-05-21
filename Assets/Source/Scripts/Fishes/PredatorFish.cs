@@ -1,8 +1,29 @@
+using System.Collections;
 using UnityEngine;
 
 public class PredatorFish : a_Fish
 {
     [SerializeField] private float _restTime;
+    private float _lastEatTime;
+    private bool _isFollowingTarget;
+
+    private bool _isReadyToSearch = true;
+
+
+    private void Start()
+    {
+        _lastEatTime -= _restTime;
+    }
+    private new void Update()
+    {
+        base.Update();
+
+        if (_lastEatTime + _restTime < Time.time && !_isFollowingTarget)
+        {
+            _isReadyToSearch = true;
+            FindNextVictim();
+        }
+    }
 
     protected override void Awake()
     {
@@ -13,12 +34,18 @@ public class PredatorFish : a_Fish
     {
         if (IsDead)
             return;
+        if (!_isReadyToSearch)
+            return;
 
-        ((ComplexMove)Moving).FindNextVictim<Fish>(VictimType.Both);
+        _isFollowingTarget =
+                ((ComplexMove)Moving).FindNextVictim<Fish>(VictimType.Both);
     }
 
     protected override void Kill()
     {
         ((ComplexMove)Moving).Target.GetComponent<Fish>().TotalyDie();
+        _lastEatTime = Time.time;
+        _isFollowingTarget = false;
+        _isReadyToSearch = false;
     }
 }

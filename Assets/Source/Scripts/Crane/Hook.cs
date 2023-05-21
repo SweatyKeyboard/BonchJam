@@ -10,8 +10,13 @@ public class Hook : MonoBehaviour
 
     private a_Employee _employee;
 
+    public bool IsLocked { get; set; } = false;
+
     private void OnMouseDrag()
     {
+        if (IsLocked)
+            return;
+        
         transform.position = new Vector3(
             transform.position.x,
             Mathf.Clamp(Camera.main.ScreenToWorldPoint(Input.mousePosition).y, _minY, _maxY),

@@ -15,4 +15,4 @@ MonoBehaviour:
   _spawnTime: 1
   _pipeBrakingValue: 3
   _objectPrefab: {fileID: -3713542946886672600, guid: 45c6e2c78ef2f554eab4c3024f9d7917, type: 3}
-  _sprite: {fileID: 21300000, guid: 52c586fb58c78e741b8eec95d3546a46, type: 3}
+  _sprite: {fileID: 21300000, guid: 0a14ca58bda8ca14893d80e6075a2ea6, type: 3}

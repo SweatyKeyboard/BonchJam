@@ -9,12 +9,17 @@ public class Worker : a_Employee
 
     private void Update()
     {
-        SearchActionElements<Pipe>();
+        if (_lastWorkedTime + _cooldown <= Time.time)
+        {
+            SearchActionElements<Pipe>();
+        }
     }
     public override void Work(Transform target)
     {
         if (target.TryGetComponent(out Pipe pipe))
         {
+            FindAnyObjectByType<Hook>().IsLocked = true;
+            FindAnyObjectByType<CraneHorizontalMove>().IsLocked = true;
             StartCoroutine(WorkCoroutine(_workTime, target, RepairPipe));
         }
     }

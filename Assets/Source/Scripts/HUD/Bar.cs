@@ -39,6 +39,11 @@ public class Bar : MonoBehaviour
     private void Update()
     {
         Value -= Time.deltaTime * (_baseDecreaseBySecond + AdditionalDecreaseBySecond);
+
+        if (Value > 80)
+        {
+            Goals.Instance.CheckOxygen();
+        }
     }
 
     public void AddOxygen(float value)

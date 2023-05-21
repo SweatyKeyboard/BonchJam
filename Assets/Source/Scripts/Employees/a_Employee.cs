@@ -8,6 +8,9 @@ public abstract class a_Employee : MonoBehaviour
     [SerializeField] private float _radius;
     [SerializeField] protected float _workTime;
 
+    [SerializeField] protected float _cooldown;
+    protected float _lastWorkedTime;
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(0.8f, 0.9f, 1f, 0.5f);
@@ -20,6 +23,9 @@ public abstract class a_Employee : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         resultAction?.Invoke(target);
+        _lastWorkedTime = Time.time;
+        FindAnyObjectByType<Hook>().IsLocked = false;
+        FindAnyObjectByType<CraneHorizontalMove>().IsLocked = false;
     }
 
     protected void SearchActionElements<T>() where T : MonoBehaviour, ISelectable

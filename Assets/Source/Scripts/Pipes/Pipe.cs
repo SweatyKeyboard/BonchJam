@@ -84,7 +84,6 @@ public class Pipe : MonoBehaviour, ISelectable
         _isSpawningNow = true;
         OpenCloseSpawnMenu();
         float elapsedTime = 0;
-        _iconFilling.sprite = element.Sprite;
         do
         {
             _iconFilling.fillAmount = elapsedTime / element.SpawnTime;
@@ -105,6 +104,9 @@ public class Pipe : MonoBehaviour, ISelectable
         _icon.SetActive(false);
 
         _isSpawningNow = false;
+
+
+        Goals.Instance.CheckFishes();
     }
 
     private void OnMouseDown()

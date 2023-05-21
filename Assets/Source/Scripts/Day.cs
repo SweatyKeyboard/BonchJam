@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class Day : MonoBehaviour
 {
+
+    public static Day Instance { get; private set; }
     [SerializeField] private TMP_Text _dayCounter;
     [SerializeField] private Image _progress;
     [SerializeField] private float _dayDuration;
@@ -22,6 +24,18 @@ public class Day : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Update()
     {
         _time += Time.deltaTime;
@@ -32,6 +46,7 @@ public class Day : MonoBehaviour
             DayNumber++;
             _time = 0;
             _supplies.GetSupply();
+            Goals.Instance.CheckDays();
         }
     }
 }

@@ -25,7 +25,7 @@ public class ComplexMove : IMoveType
         _verticalSpeed = verticalSpeed;
     }
 
-    public void FindNextVictim<T>(VictimType type) where T : a_Fish
+    public bool FindNextVictim<T>(VictimType type) where T : a_Fish
     {
         T[] victims = GameObject.FindObjectsOfType<T>();
 
@@ -58,10 +58,11 @@ public class ComplexMove : IMoveType
         if (closestIndex == -1)
         {
             _target = null;
-            return;
+            return false;
         }
 
         _target = victims[closestIndex].transform;
+        return true;
     }
 
 
