@@ -3,13 +3,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+[RequireComponent(typeof(Button))]
 public class InventorySlot : MonoBehaviour
 {
     [SerializeField] private ForPipeData _element;
-
-    [SerializeField] private Image _image;
     [SerializeField] private TMP_Text _text;
     [SerializeField] private TMP_Text _tommorowText;
+
+    private Button _button;
+    public bool ButtonActive
+    {
+        set => _button.interactable = value;
+    }
 
     private int _count;
     public int Count
@@ -23,22 +29,22 @@ public class InventorySlot : MonoBehaviour
             }
 
             _count = value;
-            _text.text = $"x{_count}";
+            _text.text = _count.ToString();
 
         }
     }
 
+    private void Awake()
+    {
+        _button = GetComponent<Button>();
+    }
+
     public void SetTommorow(int count)
     {
-        _tommorowText.text = $"+{count}";
+        _tommorowText.text = count.ToString();
     }
 
     public ForPipeData Element => _element;
-
-    private void Awake()
-    {
-        _image.sprite = _element.Sprite;
-    }
 
     private IEnumerator Blink(Color fromColor, Color toColor, float duration)
     {

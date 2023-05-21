@@ -15,6 +15,6 @@ public class ScavengerFish : a_Fish
 
     protected override void Kill()
     {
-        ((ComplexMove)Moving).Target.GetComponent<a_Fish>().TottalyDie();
+        ((ComplexMove)Moving).Target.GetComponent<a_Fish>().TotalyDie();
     }
 }

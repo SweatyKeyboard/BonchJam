@@ -18,7 +18,7 @@ public class Day : MonoBehaviour
         set
         {
             _dayNumber = value;
-            _dayCounter.text = $"Day: {value}";
+            _dayCounter.text = value.ToString();
         }
     }
 

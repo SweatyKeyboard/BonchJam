@@ -17,6 +17,6 @@ public class Fish : a_Fish
 
     protected override void Kill()
     {
-        ((ComplexMove)Moving).Target?.GetComponent<Food>().TottalyDie();
+        ((ComplexMove)Moving).Target?.GetComponent<Food>().TotalyDie();
     }
 }

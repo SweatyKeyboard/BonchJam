@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class PipeCondition : MonoBehaviour
 {
-    [SerializeField] private Image _filling;
+    [SerializeField] private Slider _filling;
     [SerializeField] private Pipe _pipe;
 
 
@@ -18,7 +18,7 @@ public class PipeCondition : MonoBehaviour
 
     private void UpdateConditionBar()
     {
-        _filling.fillAmount = _pipe.Condition / 100;
+        _filling.value = _pipe.Condition;
     }
 
 }

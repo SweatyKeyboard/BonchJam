@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1358334362707698343}
   - component: {fileID: -3713542946886672600}
   - component: {fileID: 4535765957891013838}
+  - component: {fileID: 1060440165768726741}
   m_Layer: 3
   m_Name: fish2
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1358334362707698341}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.2651364, y: 0.22227663, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: b124f202c46ab8d47a74053e755edd01, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3157b54faea665a41871632ac9618f70, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,18 +102,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06133741, y: 0.030668706}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.6666666, y: 1.0555556}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75000775, y: 0.3148039}
+  m_Size: {x: 1.6666666, y: 1.0555556}
   m_EdgeRadius: 0
 --- !u!50 &1358334362707698343
 Rigidbody2D:
@@ -162,10 +163,33 @@ MonoBehaviour:
   _horizontalSpeed: 0.02
   _verticalAmplitude: 0.01
   _verticalSpeed: 1
-  _diedTint: {r: 0.7533599, g: 0.764151, b: 0.6596209, a: 1}
+  _diedTint: {r: 1, g: 1, b: 1, a: 1}
   _eatDistance: 0.15
   _eatDuration: 0.5
   _lifeLength: 5
   _eatingLongerLife: 0
   _barDecreaseBySecondOnDead: 0.06666667
   _barIncrease: 0
+  _deadSprite: {fileID: 21300000, guid: e07db42c13f466941ba695ca5fa813f2, type: 3}
+  _deadSelected: {fileID: 21300000, guid: 24ba772ce1cfbab4b88ef07f76131c44, type: 3}
+--- !u!95 &1060440165768726741
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358334362707698341}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3ab45da613a71fb48bc9dd653c7c6a68, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

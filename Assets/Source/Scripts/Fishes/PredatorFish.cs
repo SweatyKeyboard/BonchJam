@@ -1,5 +1,10 @@
+using UnityEngine;
+
 public class PredatorFish : a_Fish
-{    protected override void Awake()
+{
+    [SerializeField] private float _restTime;
+
+    protected override void Awake()
     {
         Moving = new ComplexMove(transform, _verticalSpeed, _verticalAmplitude);
         base.Awake();
@@ -14,6 +19,6 @@ public class PredatorFish : a_Fish
 
     protected override void Kill()
     {
-        ((ComplexMove)Moving).Target.GetComponent<Fish>().TottalyDie();
+        ((ComplexMove)Moving).Target.GetComponent<Fish>().TotalyDie();
     }
 }

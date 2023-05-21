@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
-public abstract class a_Fish : MonoBehaviour, IVictim
+[RequireComponent(typeof(Animator))]
+public abstract class a_Fish : MonoBehaviour, IVictim, ISelectable
 {
     [SerializeField] protected float _horizontalSpeed;
     [SerializeField] protected float _verticalAmplitude;
@@ -23,23 +25,41 @@ public abstract class a_Fish : MonoBehaviour, IVictim
     [SerializeField] private float _barIncrease;
     private bool _isDecreasingBar;
 
+    [Header("Sprites")]
+    [SerializeField] private Sprite _deadSprite;
+    [SerializeField] private Sprite _deadSelected;
+
     protected IMoveType Moving;
 
     private Rigidbody2D _rigidBody;
     private SpriteRenderer _spriteRenderer;
+    private Animator _animator;
 
     private bool _isDead;
     public bool IsDead => _isDead;
 
     public bool IsFollowable { get; set; } = true;
 
+    private bool _isSelected;
+
+    private Action<Transform> _clicked;
+    public Action<Transform> Clicked
+    {
+        get => _clicked;
+        set => _clicked = value;
+    }
+
+    public bool IsSelected { get => _isSelected; set => _isSelected = value; }
+
     public abstract void FindNextVictim();
     protected abstract void Kill();
+
     protected virtual void Awake()
     {
         _lifeTime = _lifeLength;
         _rigidBody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
         Bar.Instance.AdditionalDecreaseBySecond -= _barIncrease;
         FindNextVictim();
     }
@@ -116,19 +136,21 @@ public abstract class a_Fish : MonoBehaviour, IVictim
         _spriteRenderer.color = _diedTint;
         _spriteRenderer.flipY = true;
         Moving = new DeadMoving(_verticalSpeed, _verticalAmplitude);
+        _animator.SetTrigger("OnDead");
 
         Bar.Instance.AdditionalDecreaseBySecond += _barDecreaseBySecondOnDead;
         _isDecreasingBar = true;
     }
 
-    public void TottalyDie()
+    public void TotalyDie()
     {
         LiveCollection.Instance.Livers.Remove(this);
 
         if (_isDecreasingBar)
         {
-            Bar.Instance.AdditionalDecreaseBySecond -= _barDecreaseBySecondOnDead - _barIncrease;
+            Bar.Instance.AdditionalDecreaseBySecond -= _barDecreaseBySecondOnDead;
         }
+        Bar.Instance.AdditionalDecreaseBySecond += _barIncrease;
 
         Destroy(gameObject);
     }
@@ -139,5 +161,25 @@ public abstract class a_Fish : MonoBehaviour, IVictim
             return;
 
         Moving.Direction = direction;
+    }
+
+    private void OnMouseDown()
+    {
+        if (!IsSelected)
+            return;
+
+        Clicked?.Invoke(transform);
+    }
+
+
+    public void Select()
+    {
+        _spriteRenderer.sprite = _deadSelected;
+
+    }
+
+    public void Deselect()
+    {
+        _spriteRenderer.sprite = _deadSprite;
     }
 }
