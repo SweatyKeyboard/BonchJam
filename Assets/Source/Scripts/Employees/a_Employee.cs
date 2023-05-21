@@ -11,6 +11,15 @@ public abstract class a_Employee : MonoBehaviour
     [SerializeField] protected float _cooldown;
     protected float _lastWorkedTime;
 
+    private SpriteRenderer _spriteRenderer;
+    protected Animator _animator;
+
+    protected virtual void Awake()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(0.8f, 0.9f, 1f, 0.5f);
@@ -21,11 +30,19 @@ public abstract class a_Employee : MonoBehaviour
 
     protected IEnumerator WorkCoroutine(float duration, Transform target, System.Action<Transform> resultAction)
     {
+        if (transform.position.x > 0)
+            _animator.SetBool("fix left", true);
+        else
+            _animator.SetBool("fix right", true);
         yield return new WaitForSeconds(duration);
         resultAction?.Invoke(target);
         _lastWorkedTime = Time.time;
         FindAnyObjectByType<Hook>().IsLocked = false;
         FindAnyObjectByType<CraneHorizontalMove>().IsLocked = false;
+        if (transform.position.x > 0)
+            _animator.SetBool("fix left", false);
+        else
+            _animator.SetBool("fix right", false);
     }
 
     protected void SearchActionElements<T>() where T : MonoBehaviour, ISelectable

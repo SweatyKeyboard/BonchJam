@@ -39,16 +39,20 @@ public class Inventory : MonoBehaviour
         {
             _isSpawnMenuOpened = true;
             _selectedPipe = pipe;
+            _selectedPipe.Select();
         }
         else
         {
             if (pipe == _selectedPipe)
             {
                 _isSpawnMenuOpened = false;
+                _selectedPipe.Deselect();
             }
             else
             {
+                _selectedPipe.Deselect();
                 _selectedPipe = pipe;
+                _selectedPipe.Select();
             }
         }
 

@@ -23,6 +23,7 @@ public class Diver : a_Employee
 
     private void TakeFish(Transform target)
     {
+        _animator.SetTrigger("clean");
         target.gameObject.GetComponent<a_Fish>().TotalyDie();
 
         Goals.Instance.DeadTook++;

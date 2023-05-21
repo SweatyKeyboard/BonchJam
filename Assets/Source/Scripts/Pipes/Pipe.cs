@@ -111,13 +111,14 @@ public class Pipe : MonoBehaviour, ISelectable
 
     private void OnMouseDown()
     {
-        if (IsSelected && Condition > _cantUseFrom)
+        if (IsSelected)
         {
             Clicked?.Invoke(transform);
             return; 
         }
 
-        OpenCloseSpawnMenu();
+        if (Condition > _cantUseFrom)
+            OpenCloseSpawnMenu();
     }
 
     public void OpenCloseSpawnMenu()
